@@ -1,0 +1,9 @@
+
+#Build docker:
+# For 6.7.1
+docker build -t nas2docker/kurento-src-docker:6.7.1 --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy --build-arg branch_name=6.7.1 . 
+# For master
+docker build -t nas2docker/kurento-src-docker:master --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy --build-arg branch_name=master . 
+
+#Run docker
+docker run -it -e GST_DEBUG="3,Kurento*:4,kms*:4,sdp*:4,webrtc*:4,*rtpendpoint:4,rtp*handler:4,rtpsynchronizer:4,agnosticbin:4" --net=host nas2docker/kurento-src-docker:6.7.1
